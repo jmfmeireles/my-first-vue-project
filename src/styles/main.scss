@@ -1,0 +1,30 @@
+// Add all shared variables for scss files here
+$backgroundColorItems: #eeeeee;
+$sapphire: #1469c7;
+
+$defaultBorderRadius: 20px;
+//Common styling
+h1 {
+  font-size: 25px !important;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+h2 {
+  font-size: 22.5px !important;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+h3 {
+  font-size: 20px !important;
+}
+h4 {
+  font-size: 17.5px !important;
+}
+h5 {
+  font-size: 15px !important;
+}
+h6 {
+  font-size: 10px !important;
+}
+.message {
+    text-align: center;
+    margin-top: 15px;
+  }
