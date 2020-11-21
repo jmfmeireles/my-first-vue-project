@@ -12,14 +12,10 @@
 </template>
 
 <script>
-import { BPagination } from "bootstrap-vue";
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "SearchBar",
-  components: {
-    "b-pagination": BPagination
-  },
   computed: mapGetters("catalog", [
     "currentPage",
     "numberOfResultsToShow",

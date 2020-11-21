@@ -7,14 +7,10 @@
 </template>
 
 <script>
-import { BFormInput } from "bootstrap-vue";
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "SearchBar",
-  components: {
-    "b-input": BFormInput
-  },
   computed: mapGetters("catalog", ["stringToSearch", "currentPage"]),
   methods: {
     ...mapMutations("catalog", ["changeResultsToShow"]),

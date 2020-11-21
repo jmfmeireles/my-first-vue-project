@@ -1,8 +1,4 @@
-import Vue from "vue";
-import Vuex from "vuex";
 import { getMusics } from "../../services/catalog.service";
-
-Vue.use(Vuex);
 
 const state = {
   isLoading: true,

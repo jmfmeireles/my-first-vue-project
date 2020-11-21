@@ -1,23 +1,37 @@
 <template>
-  <b-button variant="link" v-on:click="navigateToStore">
-    Login
-  </b-button>
+  <div id="outer-wrapper">
+    <div id="inner-wrapper">
+      <section-title :title="$t('welcome')" />
+      <login-form />
+    </div>
+  </div>
 </template>
 
 <script>
-import { BButton } from "bootstrap-vue";
-
+import LoginForm from "../components/login/LoginForm";
+import SectionTitle from "../components/common/SectionTitle.vue";
 export default {
-  name: "Store",
+  name: "Login",
   components: {
-    "b-button": BButton
-  },
-  methods: {
-    navigateToStore: function() {
-      this.$router.push({ path: "store" });
-    }
+    "login-form": LoginForm,
+    "section-title": SectionTitle
   }
 };
 </script>
-
-<style lang="scss"></style>
+<style lang="scss">
+#outer-wrapper {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  align-content: center;
+}
+#inner-wrapper {
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+}
+</style>

@@ -1,11 +1,16 @@
 export const messages = {
   en: {
     appTitle: "My music Store",
+    welcome: "Welcome to MyMusicStore",
     shoppingCart: "Shooping Cart",
     catalog: "List Of Songs",
     musicName: "Name",
     musicPrice: "Price",
     total: "Total",
+    login: {
+      submit: "Submit",
+      rememberMe: "Remember Me"
+    },
     messages: {
       noMusics: "No Musics",
       loading: "Loading",
@@ -18,11 +23,16 @@ export const messages = {
   },
   pt: {
     appTitle: "A minha loja de Músicas",
+    welcome: "Seja bem vindo à MusicStore",
     shoppingCart: "Carrinho de Compras",
     catalog: "Lista de Compras",
     musicName: "Nome",
     musicPrice: "Preço",
     total: "Total",
+    login: {
+      submit: "Submeter",
+      rememberMe: "Lembrar-me"
+    },
     messages: {
       noMusics: "Sem Músicas",
       loading: "Carregando",

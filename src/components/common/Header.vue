@@ -59,7 +59,7 @@ base-wrapper {
 
 #app-information-wrapper {
   @extend base-wrapper;
-  width: 20%;
+  width: 15%;
 }
 
 #actions-wrapper {

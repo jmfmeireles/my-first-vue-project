@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { BIconCartPlus, BIconCartX, BButton } from "bootstrap-vue";
+import { BIconCartPlus, BIconCartX } from "bootstrap-vue";
 import { mapMutations, mapGetters } from "vuex";
 
 //https://vuejs.org/v2/guide/components-props.html
@@ -39,8 +39,7 @@ export default {
   name: "SongItem",
   components: {
     "cart-icon-add": BIconCartPlus,
-    "cart-icon-remove": BIconCartX,
-    "b-button": BButton
+    "cart-icon-remove": BIconCartX
   },
   props: ["music"],
   computed: mapGetters("shoppingCart", ["isMusicOnShoppingCart"]),

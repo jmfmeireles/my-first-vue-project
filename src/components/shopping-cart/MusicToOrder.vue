@@ -9,14 +9,13 @@
 </template>
 
 <script>
-import { BIconCartX, BButton } from "bootstrap-vue";
+import { BIconCartX } from "bootstrap-vue";
 import { mapMutations } from "vuex";
 
 export default {
   name: "MusicToOrder",
   components: {
-    "cart-icon-remove": BIconCartX,
-    "b-button": BButton
+    "cart-icon-remove": BIconCartX
   },
   props: ["music"],
   methods: {
