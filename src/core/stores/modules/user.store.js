@@ -2,6 +2,7 @@ import firebase from "firebase";
 
 const state = () => ({
   isLoading: false,
+  isAuthenticated: false,
   user: null,
   errorMessage: null
 });
@@ -176,10 +177,12 @@ const mutations = {
   },
   setUser(state, payload) {
     state.user = payload;
+    state.isAuthenticated = true;
     state.isLoading = false;
   },
   setError(state, payload) {
     state.errorMessage = payload.message;
+    state.isAuthenticated = false;
     state.isLoading = false;
   },
   clearError(state) {
@@ -189,6 +192,7 @@ const mutations = {
 
 const getters = {
   isAuthLoading: state => state.isLoading,
+  isAuthenticated: state => state.isAuthenticated,
   userInfo: state => state.user,
   errorMessage: state => state.errorMessage
 };

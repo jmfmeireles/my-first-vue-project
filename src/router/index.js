@@ -1,18 +1,43 @@
-import Router from "vue-router";
+import VouRouter from "vue-router";
 import Store from "../pages/Store.vue";
 import Login from "../pages/Login.vue";
+/* import store from "../core/stores/index";
+ */
+const routes = [
+  { path: "/login", name: "login", component: Login },
 
-export default new Router({
-  mode: "history",
-  routes: [
-    { path: "/", name: "login", component: Login },
-
-    {
-      path: "/store",
-      name: "store",
-      component: Store
+  {
+    path: "/store",
+    name: "store",
+    component: Store,
+    meta: {
+      requiresAuth: true
     }
-  ]
+  },
+  {
+    path: "/",
+    name: "store",
+    component: Store,
+    meta: {
+      requiresAuth: true
+    }
+  }
+];
+
+const router = new VouRouter({
+  mode: "history",
+  routes
 });
 
-//https://github.com/aofdev/vue-firebase-auth-vuex/tree/master/src
+/* router.beforeEach((to, from, next) => {
+  if (
+    to.matched.some(m => m.meta.requiresAuth) &&
+    !store.getters.isAuthenticated
+  ) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
+}); */
+
+export default router;

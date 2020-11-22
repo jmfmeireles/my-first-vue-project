@@ -39,11 +39,4 @@ new Vue({
   i18n,
   store,
   render: h => h(App)
-  /* created() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.$store.dispatch("autoSignIn", user);
-      }
-    });
-  } */
 }).$mount("#app");

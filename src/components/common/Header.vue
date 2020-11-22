@@ -4,7 +4,7 @@
       <img src="../../assets/logo.png" width="60" height="60" />
       <h2>{{ $t("appTitle") }}</h2>
     </div>
-    <div id="actions-wrapper">
+    <div id="actions-wrapper" v-if="isAuthenticated">
       <b-button variant="link" id="popover-favorites">
         <heart-fill-icon variant="secondary" font-scale="2"></heart-fill-icon>
       </b-button>
@@ -17,6 +17,7 @@
 
 <script>
 import { BIconHeartFill, BIconPerson, BButton } from "bootstrap-vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Header",
@@ -25,6 +26,7 @@ export default {
     "heart-fill-icon": BIconHeartFill,
     "user-icon": BIconPerson
   },
+  computed: mapGetters("user", ["isAuthenticated"]),
   data() {
     return {
       showFavorites: false
