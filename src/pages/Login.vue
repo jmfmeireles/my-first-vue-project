@@ -26,7 +26,7 @@ export default {
   align-content: center;
 }
 #inner-wrapper {
-  width: 40%;
+  width: 30%;
   height: 40%;
   margin: auto;
   display: flex;

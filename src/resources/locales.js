@@ -8,7 +8,7 @@ export const messages = {
     musicPrice: "Price",
     total: "Total",
     login: {
-      submit: "Submit",
+      login: "Login",
       rememberMe: "Remember Me"
     },
     messages: {
@@ -19,6 +19,10 @@ export const messages = {
     placeholders: {
       searchMusics:
         "Type here the name of the music or the singer/band you want to search"
+    },
+    favorites: {
+      title: "Favorites",
+      noFavorites: "You do not have favorites"
     }
   },
   pt: {
@@ -30,7 +34,7 @@ export const messages = {
     musicPrice: "Preço",
     total: "Total",
     login: {
-      submit: "Submeter",
+      login: "Entrar",
       rememberMe: "Lembrar-me"
     },
     messages: {
@@ -41,6 +45,10 @@ export const messages = {
     placeholders: {
       searchMusics:
         "Escreva aqui o nome da música ou cantor/banda que quer pesquisar"
+    },
+    favorites: {
+      title: "Favoritos",
+      noFavorites: "Não tem favoritos adicionados"
     }
   }
 };

@@ -5,9 +5,7 @@
       <h2>{{ $t("appTitle") }}</h2>
     </div>
     <div id="actions-wrapper" v-if="isAuthenticated">
-      <b-button variant="link" id="popover-favorites">
-        <heart-fill-icon variant="secondary" font-scale="2"></heart-fill-icon>
-      </b-button>
+      <favorites-popover />
       <b-button variant="link">
         <user-icon variant="secondary" font-scale="2"></user-icon>
       </b-button>
@@ -16,15 +14,16 @@
 </template>
 
 <script>
-import { BIconHeartFill, BIconPerson, BButton } from "bootstrap-vue";
+import { BIconPerson, BButton } from "bootstrap-vue";
+import FavoritesPopover from "../favorites/FavoritesPopover";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Header",
   components: {
     "b-button": BButton,
-    "heart-fill-icon": BIconHeartFill,
-    "user-icon": BIconPerson
+    "user-icon": BIconPerson,
+    "favorites-popover": FavoritesPopover
   },
   computed: mapGetters("user", ["isAuthenticated"]),
   data() {
@@ -46,10 +45,12 @@ head {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
   padding: 0px 10px;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 
 base-wrapper {

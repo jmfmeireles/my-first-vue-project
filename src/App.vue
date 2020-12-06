@@ -30,7 +30,7 @@ export default {
   display: flex;
   flex-flow: column;
   background-color: $backgroundColorItems;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #app-body {
@@ -42,5 +42,6 @@ export default {
   top: 8vh;
   min-height: 92vh;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 </style>

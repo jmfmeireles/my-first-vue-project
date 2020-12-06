@@ -26,12 +26,31 @@
       >
         <cart-icon-remove variant="danger" font-scale="2"></cart-icon-remove>
       </b-button>
+      <b-button
+        variant="link"
+        v-show="isMusicOnFavorites(music.trackId)"
+        v-on:click="removeFavorite(music.trackId)"
+      >
+        <heart-fill-icon variant="danger" font-scale="2"></heart-fill-icon>
+      </b-button>
+      <b-button
+        variant="link"
+        v-show="!isMusicOnFavorites(music.trackId)"
+        v-on:click="addFavorite(music)"
+      >
+        <heart-icon variant="danger" font-scale="2"></heart-icon>
+      </b-button>
     </div>
   </div>
 </template>
 
 <script>
-import { BIconCartPlus, BIconCartX } from "bootstrap-vue";
+import {
+  BIconCartPlus,
+  BIconCartX,
+  BIconHeartFill,
+  BIconHeart
+} from "bootstrap-vue";
 import { mapMutations, mapGetters } from "vuex";
 
 //https://vuejs.org/v2/guide/components-props.html
@@ -39,12 +58,18 @@ export default {
   name: "SongItem",
   components: {
     "cart-icon-add": BIconCartPlus,
-    "cart-icon-remove": BIconCartX
+    "cart-icon-remove": BIconCartX,
+    "heart-fill-icon": BIconHeartFill,
+    "heart-icon": BIconHeart
   },
   props: ["music"],
-  computed: mapGetters("shoppingCart", ["isMusicOnShoppingCart"]),
+  computed: {
+    ...mapGetters("shoppingCart", ["isMusicOnShoppingCart"]),
+    ...mapGetters("favorites", ["isMusicOnFavorites"])
+  },
   methods: {
-    ...mapMutations("shoppingCart", ["addMusic", "removeMusic"])
+    ...mapMutations("shoppingCart", ["addMusic", "removeMusic"]),
+    ...mapMutations("favorites", ["addFavorite", "removeFavorite"])
   }
 };
 </script>

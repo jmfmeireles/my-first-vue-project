@@ -23,17 +23,17 @@
             required
           ></b-form-input>
         </b-form-group>
-        <b-form-checkbox id="remember-me">{{
-          $t("login.rememberMe")
-        }}</b-form-checkbox>
         <b-button
           type="button"
           variant="success"
           v-on:click="onSubmit"
           id="submit-button"
-          >{{ $t("login.submit") }}</b-button
+          >{{ $t("login.login") }}</b-button
         >
       </b-form>
+    </div>
+    <div id="login-social-network">
+      <h5>Login with</h5>
     </div>
   </div>
 </template>
@@ -43,11 +43,13 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "LoginForm",
+  components: {
+  },
   computed: mapGetters("user", ["userInfo", "errorMessage"]),
   watch: {
     userInfo(value) {
       if (value !== null && value !== undefined) {
-        this.$router.push("/store");
+        this.$router.replace("/store");
       }
     }
   },
@@ -83,7 +85,6 @@ export default {
 }
 
 #submit-button {
-  margin-top: 20px;
   width: 60%;
 }
 </style>

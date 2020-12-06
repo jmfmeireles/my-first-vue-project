@@ -5,6 +5,7 @@ import createLogger from "vuex/dist/logger";
 import catalog from "./modules/catalog.store";
 import shoppingCart from "./modules/shoppingCart.store";
 import user from "./modules/user.store";
+import favorites from "./modules/favorites.store";
 
 Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== "production";
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   modules: {
     catalog,
     shoppingCart,
-    user
+    user,
+    favorites
   },
   strict: debug,
   plugins: debug ? [createLogger(loggerOptions)] : []
