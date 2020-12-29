@@ -1,11 +1,11 @@
 <template>
   <div>
-    <b-button variant="link" id="popover-favorites">
+    <b-button variant="link" id="favorites-icon">
       <heart-fill-icon variant="secondary" font-scale="2"></heart-fill-icon>
     </b-button>
     <b-popover
-      id="popover"
-      target="popover-favorites"
+      id="popover-favorites"
+      target="favorites-icon"
       triggers="click"
       placement="bottom"
       boundary="window"
@@ -43,7 +43,7 @@ export default {
 <style lang="scss">
 @import "@/styles/main.scss";
 
-#popover {
+#popover-favorites {
   min-width: 400px;
   border-radius: $defaultBorderRadius;
   max-height: 70vh;

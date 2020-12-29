@@ -6,16 +6,14 @@
     </div>
     <div id="actions-wrapper" v-if="isAuthenticated">
       <favorites-popover />
-      <b-button variant="link">
-        <user-icon variant="secondary" font-scale="2"></user-icon>
-      </b-button>
+      <user-popover />
     </div>
   </head>
 </template>
 
 <script>
-import { BIconPerson } from "bootstrap-vue";
-import FavoritesPopover from "../favorites/FavoritesPopover";
+import FavoritesPopover from "../favorites/FavoritesPopover.vue";
+import UserPopover from "../user/UserPopover.vue";
 import { mapGetters } from "vuex";
 import { BIconMusicNote } from "bootstrap-vue";
 
@@ -23,15 +21,10 @@ export default {
   name: "Header",
   components: {
     "music-note-icon": BIconMusicNote,
-    "user-icon": BIconPerson,
+    "user-popover": UserPopover,
     "favorites-popover": FavoritesPopover
   },
-  computed: mapGetters("user", ["isAuthenticated"]),
-  data() {
-    return {
-      showFavorites: false
-    };
-  }
+  computed: mapGetters("user", ["isAuthenticated"])
 };
 </script>
 

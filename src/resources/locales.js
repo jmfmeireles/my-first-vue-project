@@ -8,10 +8,14 @@ export const messages = {
     musicPrice: "Price",
     total: "Total",
     login: {
+      email: "Email",
+      password: "Password",
       signin: "Sign In",
       rememberMe: "Remember Me",
       wallpaperTerms:
-        "Background vector created by luis_molinero - www.freepik.com"
+        "Background vector created by luis_molinero - www.freepik.com",
+      forgotPassword: "Forgot your Password?",
+      socialNetworkLogin: "Or sign in with"
     },
     messages: {
       noMusics: "No Musics",
@@ -25,7 +29,8 @@ export const messages = {
     favorites: {
       title: "Favorites",
       noFavorites: "You do not have favorites"
-    }
+    },
+    logout: "Logout"
   },
   pt: {
     appTitle: "A minha loja de Músicas",
@@ -36,9 +41,13 @@ export const messages = {
     musicPrice: "Preço",
     total: "Total",
     login: {
+      email: "Email",
+      password: "Password",
       signin: "Entrar",
       rememberMe: "Lembrar-me",
-      wallpaperTerms: "Fundo criado por luis_molinero - www.freepik.com"
+      wallpaperTerms: "Fundo criado por luis_molinero - www.freepik.com",
+      forgotPassword: "Esqueceu-se da sua password?",
+      socialNetworkLogin: "Ou entrar com"
     },
     messages: {
       noMusics: "Sem Músicas",
@@ -52,6 +61,7 @@ export const messages = {
     favorites: {
       title: "Favoritos",
       noFavorites: "Não tem favoritos adicionados"
-    }
+    },
+    logout: "Terminar Sessão"
   }
 };

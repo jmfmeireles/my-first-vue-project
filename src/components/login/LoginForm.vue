@@ -8,12 +8,12 @@
             v-model="form.email"
             type="email"
             required
-            placeholder="Email"
+            :placeholder="$t('login.email')"
           ></b-form-input>
           <b-form-input
             type="password"
             v-model="form.password"
-            placeholder="Password"
+            :placeholder="$t('login.password')"
             required
           ></b-form-input>
         </b-form-group>
@@ -27,19 +27,19 @@
             type="button"
             :disabled="errorMessage === null"
             v-on:click="resetPassword"
-            >Forgot your password?</b-button
+            >{{ $t("login.forgotPassword") }}</b-button
           >
         </div>
         <b-alert
           id="error-alert"
-          :show="messageType !== null"
+          v-if="messageType !== null"
           :variant="messageType"
           >{{ authMessage }}</b-alert
         >
       </b-form>
     </div>
     <div id="login-social-network">
-      <h5>Or sign in with</h5>
+      <h5>{{ $t("login.socialNetworkLogin") }}</h5>
       <b-button variant="link" v-on:click="signUserInGoogle">
         <google-icon size="25" />
       </b-button>
@@ -66,14 +66,7 @@ export default {
     "google-icon": GoogleIcon,
     "github-icon": GitHubIcon
   },
-  computed: mapGetters("user", ["userInfo", "messageType", "authMessage"]),
-  watch: {
-    userInfo(value) {
-      if (value !== null && value !== undefined) {
-        this.$router.replace("/store");
-      }
-    }
-  },
+  computed: mapGetters("user", ["messageType", "authMessage"]),
   methods: {
     ...mapActions("user", [
       "signUserIn",
@@ -84,7 +77,6 @@ export default {
     ]),
     onSubmit(event) {
       event.preventDefault();
-      this.form.authSubmitted = true;
       this.signUserIn(this.form);
     },
     resetPassword() {

@@ -1,6 +1,7 @@
 import VouRouter from "vue-router";
 import Store from "../pages/Store.vue";
 import Login from "../pages/Login.vue";
+
 const routes = [
   { path: "/", name: "login", component: Login },
 
@@ -12,10 +13,7 @@ const routes = [
   {
     path: "/store",
     name: "store",
-    component: Store,
-    meta: {
-      requiresAuth: true
-    }
+    component: Store
   }
 ];
 

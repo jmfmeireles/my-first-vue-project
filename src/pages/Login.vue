@@ -12,11 +12,21 @@
 <script>
 import LoginForm from "../components/login/LoginForm";
 import Wallpaper from "../components/login/Wallpaper.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "Login",
   components: {
     "login-form": LoginForm,
     wallpaper: Wallpaper
+  },
+  computed: mapGetters("user", ["userInfo"]),
+  watch: {
+    userInfo(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/store");
+      }
+    }
   }
 };
 </script>

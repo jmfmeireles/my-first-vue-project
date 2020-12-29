@@ -1,5 +1,5 @@
 <template>
-  <div id="store-wrapper">
+  <div id="store-wrapper" v-if="isAuthenticated">
     <div id="catalog-wrapper">
       <section-title :title="$t('catalog')" />
       <seach-bar />
@@ -19,7 +19,7 @@ import SearchBar from "../components/catalog/SearchBar.vue";
 import Pagination from "../components/catalog/Pagination.vue";
 import SectionTitle from "../components/common/SectionTitle.vue";
 import ShoppingCart from "../components/shopping-cart";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Store",
@@ -30,8 +30,21 @@ export default {
     pagination: Pagination,
     cart: ShoppingCart
   },
+  computed: mapGetters("user", ["isAuthenticated", "userInfo"]),
   methods: {
     ...mapActions("catalog", ["getMusics"])
+  },
+  beforeMount() {
+    if (!this.isAuthenticated) {
+      this.$router.replace("/");
+    }
+  },
+  watch: {
+    userInfo(value) {
+      if (value === null || value === undefined) {
+        this.$router.replace("/");
+      }
+    }
   },
   created() {
     this.getMusics({});

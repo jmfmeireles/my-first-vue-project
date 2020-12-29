@@ -17,15 +17,8 @@ const actions = {
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
-      .then(user => {
-        commit("setLoading", false);
-        const newUser = {
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL
-        };
-        commit("setUser", newUser);
+      .then(data => {
+        commit("setUser", data.user);
       })
       .catch(error => {
         commit("setLoading", false);
@@ -36,19 +29,11 @@ const actions = {
   signUserIn({ commit }, payload) {
     commit("setLoading", true);
     commit("clearMessage");
-    console.log(payload);
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
-      .then(user => {
-        commit("setLoading", false);
-        const newUser = {
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL
-        };
-        commit("setUser", newUser);
+      .then(data => {
+        commit("setUser", data.user);
       })
       .catch(error => {
         commit("setLoading", false);
@@ -62,15 +47,8 @@ const actions = {
     firebase
       .auth()
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(user => {
-        commit("setLoading", false);
-        const newUser = {
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL
-        };
-        commit("setUser", newUser);
+      .then(data => {
+        commit("setUser", data.user);
       })
       .catch(error => {
         commit("setLoading", false);
@@ -84,15 +62,8 @@ const actions = {
     firebase
       .auth()
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then(user => {
-        commit("setLoading", false);
-        const newUser = {
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL
-        };
-        commit("setUser", newUser);
+      .then(data => {
+        commit("setUser", data.user);
       })
       .catch(error => {
         commit("setLoading", false);
@@ -106,29 +77,14 @@ const actions = {
     firebase
       .auth()
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
-      .then(user => {
-        commit("setLoading", false);
-        const newUser = {
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL
-        };
-        commit("setUser", newUser);
+      .then(data => {
+        commit("setUser", data.user);
       })
       .catch(error => {
         commit("setLoading", false);
         commit("setError", error);
         console.log(error);
       });
-  },
-  autoSignIn({ commit }, payload) {
-    commit("setUser", {
-      id: payload.uid,
-      name: payload.displayName,
-      email: payload.email,
-      photoUrl: payload.photoURL
-    });
   },
   resetPasswordWithEmail({ commit }, payload) {
     const { email } = payload;
@@ -148,7 +104,7 @@ const actions = {
   },
   logout({ commit }) {
     firebase.auth().signOut();
-    commit("setUser", null);
+    commit("logout");
   }
 };
 
@@ -157,7 +113,12 @@ const mutations = {
     state.isLoading = true;
   },
   setUser(state, payload) {
-    state.user = payload;
+    state.user = {
+      uid: payload.uid,
+      displayName: payload.displayName,
+      email: payload.email,
+      photoURL: payload.photoURL
+    };
     state.isAuthenticated = true;
     state.isLoading = false;
   },
@@ -182,6 +143,11 @@ const mutations = {
       type: null,
       message: ""
     };
+  },
+  logout(state) {
+    state.user = null;
+    state.isAuthenticated = false;
+    state.isLoading = false;
   }
 };
 
