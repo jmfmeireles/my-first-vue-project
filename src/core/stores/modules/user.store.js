@@ -4,13 +4,16 @@ const state = () => ({
   isLoading: false,
   isAuthenticated: false,
   user: null,
-  errorMessage: null
+  messageHandling: {
+    message: "",
+    type: null
+  }
 });
 
 const actions = {
   signUserUp({ commit }, payload) {
     commit("setLoading", true);
-    commit("clearError");
+    commit("clearMessage");
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
@@ -32,7 +35,7 @@ const actions = {
   },
   signUserIn({ commit }, payload) {
     commit("setLoading", true);
-    commit("clearError");
+    commit("clearMessage");
     console.log(payload);
     firebase
       .auth()
@@ -55,7 +58,7 @@ const actions = {
   },
   signUserInGoogle({ commit }) {
     commit("setLoading", true);
-    commit("clearError");
+    commit("clearMessage");
     firebase
       .auth()
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
@@ -77,7 +80,7 @@ const actions = {
   },
   signUserInFacebook({ commit }) {
     commit("setLoading", true);
-    commit("clearError");
+    commit("clearMessage");
     firebase
       .auth()
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
@@ -99,32 +102,10 @@ const actions = {
   },
   signUserInGithub({ commit }) {
     commit("setLoading", true);
-    commit("clearError");
+    commit("clearMessage");
     firebase
       .auth()
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
-      .then(user => {
-        commit("setLoading", false);
-        const newUser = {
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL
-        };
-        commit("setUser", newUser);
-      })
-      .catch(error => {
-        commit("setLoading", false);
-        commit("setError", error);
-        console.log(error);
-      });
-  },
-  signUserInTwitter({ commit }) {
-    commit("setLoading", true);
-    commit("clearError");
-    firebase
-      .auth()
-      .signInWithPopup(new firebase.auth.TwitterAuthProvider())
       .then(user => {
         commit("setLoading", false);
         const newUser = {
@@ -156,7 +137,7 @@ const actions = {
       .auth()
       .sendPasswordResetEmail(email)
       .then(() => {
-        commit("setLoading", false);
+        commit("setInfo", "An email was sent to your account. Please check!");
         console.log("Email Sent");
       })
       .catch(error => {
@@ -181,12 +162,26 @@ const mutations = {
     state.isLoading = false;
   },
   setError(state, payload) {
-    state.errorMessage = payload.message;
+    state.messageHandling = {
+      type: "danger",
+      message: payload.message
+    };
     state.isAuthenticated = false;
     state.isLoading = false;
   },
-  clearError(state) {
-    state.errorMessage = null;
+  setInfo(state, payload) {
+    state.messageHandling = {
+      type: "info",
+      message: payload
+    };
+    state.isAuthenticated = false;
+    state.isLoading = false;
+  },
+  clearMessage(state) {
+    state.messageHandling = {
+      type: null,
+      message: ""
+    };
   }
 };
 
@@ -194,7 +189,9 @@ const getters = {
   isAuthLoading: state => state.isLoading,
   isAuthenticated: state => state.isAuthenticated,
   userInfo: state => state.user,
-  errorMessage: state => state.errorMessage
+  isErrorStatus: state => state.isErrorStatus,
+  messageType: state => state.messageHandling.type,
+  authMessage: state => state.messageHandling.message
 };
 
 export default {

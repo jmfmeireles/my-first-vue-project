@@ -1,7 +1,7 @@
 <template>
   <head>
     <div id="app-information-wrapper">
-      <img src="../../assets/logo.png" width="60" height="60" />
+      <music-note-icon variant="secondary" font-scale="3"></music-note-icon>
       <h2>{{ $t("appTitle") }}</h2>
     </div>
     <div id="actions-wrapper" v-if="isAuthenticated">
@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import { BIconPerson, BButton } from "bootstrap-vue";
+import { BIconPerson } from "bootstrap-vue";
 import FavoritesPopover from "../favorites/FavoritesPopover";
 import { mapGetters } from "vuex";
+import { BIconMusicNote } from "bootstrap-vue";
 
 export default {
   name: "Header",
   components: {
-    "b-button": BButton,
+    "music-note-icon": BIconMusicNote,
     "user-icon": BIconPerson,
     "favorites-popover": FavoritesPopover
   },
@@ -38,7 +39,7 @@ export default {
 head {
   height: 8vh;
   width: 100%;
-  background-color: #9eb7bb;
+  background-color: #8bcbcd;
   position: absolute;
   color: #eeeeee;
   display: flex;

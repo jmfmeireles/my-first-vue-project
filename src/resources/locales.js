@@ -8,8 +8,10 @@ export const messages = {
     musicPrice: "Price",
     total: "Total",
     login: {
-      login: "Login",
-      rememberMe: "Remember Me"
+      signin: "Sign In",
+      rememberMe: "Remember Me",
+      wallpaperTerms:
+        "Background vector created by luis_molinero - www.freepik.com"
     },
     messages: {
       noMusics: "No Musics",
@@ -34,8 +36,9 @@ export const messages = {
     musicPrice: "Preço",
     total: "Total",
     login: {
-      login: "Entrar",
-      rememberMe: "Lembrar-me"
+      signin: "Entrar",
+      rememberMe: "Lembrar-me",
+      wallpaperTerms: "Fundo criado por luis_molinero - www.freepik.com"
     },
     messages: {
       noMusics: "Sem Músicas",

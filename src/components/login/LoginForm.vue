@@ -1,14 +1,8 @@
 <template>
   <div>
+    <section-title :title="$t('login.signin')" />
     <div>
-      <b-alert
-        id="error-alert"
-        :show="errorMessage !== null"
-        dismissible
-        variant="danger"
-        >{{ errorMessage }}</b-alert
-      >
-      <b-form submit>
+      <b-form @submit="onSubmit">
         <b-form-group id="credentials-form">
           <b-form-input
             v-model="form.email"
@@ -23,29 +17,56 @@
             required
           ></b-form-input>
         </b-form-group>
-        <b-button
-          type="button"
-          variant="success"
-          v-on:click="onSubmit"
-          id="submit-button"
-          >{{ $t("login.login") }}</b-button
+        <div id="account-actions">
+          <b-button type="submit" id="submit-button">{{
+            $t("login.signin")
+          }}</b-button>
+          <b-button
+            id="forgot-password-button"
+            variant="link"
+            type="button"
+            :disabled="errorMessage === null"
+            v-on:click="resetPassword"
+            >Forgot your password?</b-button
+          >
+        </div>
+        <b-alert
+          id="error-alert"
+          :show="messageType !== null"
+          :variant="messageType"
+          >{{ authMessage }}</b-alert
         >
       </b-form>
     </div>
     <div id="login-social-network">
-      <h5>Login with</h5>
+      <h5>Or sign in with</h5>
+      <b-button variant="link" v-on:click="signUserInGoogle">
+        <google-icon size="25" />
+      </b-button>
+      <b-button variant="link" v-on:click="signUserInFacebook">
+        <facebook-icon size="25" />
+      </b-button>
+      <b-button variant="link" v-on:click="signUserInGithub">
+        <github-icon size="25" />
+      </b-button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import SectionTitle from "../common/SectionTitle";
+import { FacebookIcon, GitHubIcon, GoogleIcon } from "vue-simple-icons";
 
 export default {
   name: "LoginForm",
   components: {
+    "section-title": SectionTitle,
+    "facebook-icon": FacebookIcon,
+    "google-icon": GoogleIcon,
+    "github-icon": GitHubIcon
   },
-  computed: mapGetters("user", ["userInfo", "errorMessage"]),
+  computed: mapGetters("user", ["userInfo", "messageType", "authMessage"]),
   watch: {
     userInfo(value) {
       if (value !== null && value !== undefined) {
@@ -54,9 +75,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions("user", ["signUserIn"]),
-    onSubmit() {
+    ...mapActions("user", [
+      "signUserIn",
+      "signUserInGoogle",
+      "signUserInFacebook",
+      "signUserInGithub",
+      "resetPasswordWithEmail"
+    ]),
+    onSubmit(event) {
+      event.preventDefault();
+      this.form.authSubmitted = true;
       this.signUserIn(this.form);
+    },
+    resetPassword() {
+      this.resetPasswordWithEmail(this.form);
     }
   },
   data() {
@@ -71,10 +103,8 @@ export default {
 </script>
 <style lang="scss">
 #error-alert {
+  margin-top: 15px;
   font-size: 12px;
-  & .close {
-    bottom: 0;
-  }
   margin-bottom: 5px;
 }
 #credentials-form {
@@ -84,7 +114,32 @@ export default {
   margin-bottom: 2px;
 }
 
+#account-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #submit-button {
+  min-width: 50%;
+  background-color: #8bcbcd;
+  border-color: #8bcbcd;
+}
+
+#forgot-password-button {
+  color: #8bcbcd;
+}
+
+#login-social-network {
+  display: flex;
   width: 60%;
+  flex-direction: row;
+  margin: 30px auto 0px auto;
+  color: #495057;
+  align-items: center;
+  justify-content: space-between;
+  * {
+    margin-bottom: 0px !important;
+  }
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div id="outer-wrapper">
-    <div id="inner-wrapper">
-      <section-title :title="$t('welcome')" />
+    <div id="wallpaper-wrapper">
+      <wallpaper />
+    </div>
+    <div id="login-or-signup-wrapper">
       <login-form />
     </div>
   </div>
@@ -9,12 +11,12 @@
 
 <script>
 import LoginForm from "../components/login/LoginForm";
-import SectionTitle from "../components/common/SectionTitle.vue";
+import Wallpaper from "../components/login/Wallpaper.vue";
 export default {
   name: "Login",
   components: {
     "login-form": LoginForm,
-    "section-title": SectionTitle
+    wallpaper: Wallpaper
   }
 };
 </script>
@@ -23,12 +25,14 @@ export default {
   width: 100%;
   height: 92vh;
   display: flex;
-  align-content: center;
+  flex-direction: row;
 }
-#inner-wrapper {
-  width: 30%;
-  height: 40%;
-  margin: auto;
+#wallpaper-wrapper {
+  width: 65%;
+}
+#login-or-signup-wrapper {
+  width: 35%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
