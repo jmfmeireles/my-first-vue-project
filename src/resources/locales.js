@@ -15,7 +15,9 @@ export const messages = {
       wallpaperTerms:
         "Background vector created by luis_molinero - www.freepik.com",
       forgotPassword: "Forgot your Password?",
-      socialNetworkLogin: "Or sign in with"
+      socialNetworkLogin: "Or sign in with",
+      haveAccountQuestion: "Don't have an account?",
+      signup: "Sign up"
     },
     messages: {
       noMusics: "No Musics",
@@ -47,7 +49,9 @@ export const messages = {
       rememberMe: "Lembrar-me",
       wallpaperTerms: "Fundo criado por luis_molinero - www.freepik.com",
       forgotPassword: "Esqueceu-se da sua password?",
-      socialNetworkLogin: "Ou entrar com"
+      socialNetworkLogin: "Ou entrar com",
+      haveAccountQuestion: "Não tem uma conta?",
+      signup: "Registar"
     },
     messages: {
       noMusics: "Sem Músicas",

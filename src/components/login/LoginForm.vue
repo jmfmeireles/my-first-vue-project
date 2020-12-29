@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <section-title :title="$t('login.signin')" />
-    <div>
+  <div id="login-wrapper">
+    <div id="login-form">
+      <section-title :title="$t('login.signin')" />
       <b-form @submit="onSubmit">
         <b-form-group id="credentials-form">
           <b-form-input
@@ -50,6 +50,12 @@
         <github-icon size="25" />
       </b-button>
     </div>
+    <div id="sign-up-option">
+      <h5>{{ $t("login.haveAccountQuestion") }}</h5>
+      <b-button type="submit" id="submit-button">{{
+        $t("login.signup")
+      }}</b-button>
+    </div>
   </div>
 </template>
 
@@ -94,6 +100,15 @@ export default {
 };
 </script>
 <style lang="scss">
+#login-wrapper {
+  height: 100%;
+}
+
+#login-form {
+  padding-top: 50%;
+  height: 70%;
+}
+
 #error-alert {
   margin-top: 15px;
   font-size: 12px;
@@ -125,13 +140,18 @@ export default {
 #login-social-network {
   display: flex;
   width: 60%;
+  height: 20%;
   flex-direction: row;
-  margin: 30px auto 0px auto;
+  margin: auto;
   color: #495057;
   align-items: center;
   justify-content: space-between;
   * {
     margin-bottom: 0px !important;
   }
+}
+
+#sign-up-option {
+  height: 10%;
 }
 </style>
