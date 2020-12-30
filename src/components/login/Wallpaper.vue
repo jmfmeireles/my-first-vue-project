@@ -12,6 +12,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "@/styles/main.scss";
 #wallpaper {
   position: relative;
   width: 100%;
@@ -31,6 +32,6 @@ a {
   position: absolute;
   top: 45%;
   font-size: 30px !important;
-  color: #8bcbcd;
+  color: $mainColor;
 }
 </style>

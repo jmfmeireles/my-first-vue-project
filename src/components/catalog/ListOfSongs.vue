@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 v-if="isLoading" class="message">{{ $t("messages.loading") }}...</h4>
+    <busy-indicator v-if="isLoading" />
     <h4
       v-if="musicsToDisplay && !musicsToDisplay.length && !isLoading"
       class="message"
@@ -17,12 +17,14 @@
 
 <script>
 import SongItem from "./SongItem.vue";
+import BusyIndicator from "../common/BusyIndicator.vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "ListOfSongs",
   components: {
-    "song-item": SongItem
+    "song-item": SongItem,
+    "busy-indicator": BusyIndicator
   },
   computed: mapGetters("catalog", ["musicsToDisplay", "isLoading"])
 };

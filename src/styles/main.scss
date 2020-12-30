@@ -1,6 +1,7 @@
 // Add all shared variables for scss files here
 $backgroundColorItems: #eeeeee;
 $sapphire: #1469c7;
+$mainColor: #8bcbcd;
 
 $defaultBorderRadius: 20px;
 //Common styling
@@ -27,4 +28,10 @@ h6 {
 .message {
     text-align: center;
     margin-top: 15px;
-  }
+}
+
+.submit-button {
+  width: 50%;
+  background-color: $mainColor;
+  border-color: $mainColor;
+}

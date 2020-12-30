@@ -3,24 +3,29 @@
     <div id="wallpaper-wrapper">
       <wallpaper />
     </div>
-    <div id="login-or-signup-wrapper">
-      <login-form />
+    <div id="login-or-signup-wrapper" v-if="!isAuthLoading">
+      <login-form v-if="!isSignUp" />
+    </div>
+    <div id="busy-indicator-wrapper" v-if="isAuthLoading">
+      <busy-indicator />
     </div>
   </div>
 </template>
 
 <script>
-import LoginForm from "../components/login/LoginForm";
+import Form from "../components/login/Form";
 import Wallpaper from "../components/login/Wallpaper.vue";
+import BusyIndicator from "../components/common/BusyIndicator";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Login",
   components: {
-    "login-form": LoginForm,
-    wallpaper: Wallpaper
+    "login-form": Form,
+    wallpaper: Wallpaper,
+    "busy-indicator": BusyIndicator
   },
-  computed: mapGetters("user", ["userInfo"]),
+  computed: mapGetters("user", ["userInfo", "isAuthLoading", "isSignUp"]),
   watch: {
     userInfo(value) {
       if (value !== null && value !== undefined) {
@@ -40,7 +45,8 @@ export default {
 #wallpaper-wrapper {
   width: 65%;
 }
-#login-or-signup-wrapper {
+#login-or-signup-wrapper,
+#busy-indicator-wrapper {
   width: 35%;
   padding: 20px;
   display: flex;

@@ -39,6 +39,11 @@ export default {
       this.$router.replace("/");
     }
   },
+  mounted() {
+    window.onpopstate = () => {
+      this.$router.replace("/store");
+    };
+  },
   watch: {
     userInfo(value) {
       if (value === null || value === undefined) {

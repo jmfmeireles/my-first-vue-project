@@ -29,10 +29,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/main.scss";
 head {
   height: 8vh;
   width: 100%;
-  background-color: #8bcbcd;
+  background-color: $mainColor;
   position: absolute;
   color: #eeeeee;
   display: flex;

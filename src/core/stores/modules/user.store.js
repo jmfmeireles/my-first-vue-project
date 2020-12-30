@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import * as Constants from "../../../resources/constants";
 
 const state = () => ({
   isLoading: false,
@@ -7,7 +8,8 @@ const state = () => ({
   messageHandling: {
     message: "",
     type: null
-  }
+  },
+  mode: Constants.SIGN_IN
 });
 
 const actions = {
@@ -109,8 +111,8 @@ const actions = {
 };
 
 const mutations = {
-  setLoading(state) {
-    state.isLoading = true;
+  setLoading(state, payload) {
+    state.isLoading = payload;
   },
   setUser(state, payload) {
     state.user = {
@@ -148,16 +150,27 @@ const mutations = {
     state.user = null;
     state.isAuthenticated = false;
     state.isLoading = false;
+  },
+  setSignIn(state) {
+    state.mode = Constants.SIGN_IN;
+  },
+  setSignUp(state) {
+    state.mode = Constants.SIGN_UP;
+  },
+  setPasswordRecovery(state) {
+    state.mode = Constants.RECOVER_PASSWORD;
   }
 };
 
 const getters = {
   isAuthLoading: state => state.isLoading,
   isAuthenticated: state => state.isAuthenticated,
+  isSignUp: state => state.isSignUp,
   userInfo: state => state.user,
   isErrorStatus: state => state.isErrorStatus,
   messageType: state => state.messageHandling.type,
-  authMessage: state => state.messageHandling.message
+  authMessage: state => state.messageHandling.message,
+  mode: state => state.mode
 };
 
 export default {

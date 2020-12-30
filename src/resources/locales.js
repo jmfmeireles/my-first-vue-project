@@ -17,7 +17,11 @@ export const messages = {
       forgotPassword: "Forgot your Password?",
       socialNetworkLogin: "Or sign in with",
       haveAccountQuestion: "Don't have an account?",
-      signup: "Sign up"
+      signup: "Sign up",
+      havingAccountAlready: "Do you have an account?",
+      knowingPassword: "Already knowing the password?",
+      passwordRecovery: "Recover Password",
+      confirmPassword: "Confirm Password"
     },
     messages: {
       noMusics: "No Musics",
@@ -51,7 +55,11 @@ export const messages = {
       forgotPassword: "Esqueceu-se da sua password?",
       socialNetworkLogin: "Ou entrar com",
       haveAccountQuestion: "Não tem uma conta?",
-      signup: "Registar"
+      signup: "Registar",
+      havingAccountAlready: "Já tem uma conta?",
+      knowingPassword: "Já sabe a password?",
+      passwordRecovery: "Recuperar password",
+      confirmPassword: "Confirmar Password"
     },
     messages: {
       noMusics: "Sem Músicas",
