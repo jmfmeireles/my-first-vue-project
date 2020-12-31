@@ -123,6 +123,7 @@ const mutations = {
     };
     state.isAuthenticated = true;
     state.isLoading = false;
+    state.mode = Constants.SIGN_IN;
   },
   setError(state, payload) {
     state.messageHandling = {
@@ -153,12 +154,24 @@ const mutations = {
   },
   setSignIn(state) {
     state.mode = Constants.SIGN_IN;
+    state.messageHandling = {
+      type: null,
+      message: ""
+    };
   },
   setSignUp(state) {
     state.mode = Constants.SIGN_UP;
+    state.messageHandling = {
+      type: null,
+      message: ""
+    };
   },
   setPasswordRecovery(state) {
     state.mode = Constants.RECOVER_PASSWORD;
+    state.messageHandling = {
+      type: null,
+      message: ""
+    };
   }
 };
 

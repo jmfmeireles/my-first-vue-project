@@ -21,7 +21,9 @@ export const messages = {
       havingAccountAlready: "Do you have an account?",
       knowingPassword: "Already knowing the password?",
       passwordRecovery: "Recover Password",
-      confirmPassword: "Confirm Password"
+      confirmPassword: "Confirm Password",
+      passwordMismatch: "Passwords don't match",
+      passwordWithInvalidLength: "Passwords must have at least 6 characters"
     },
     messages: {
       noMusics: "No Musics",
@@ -59,7 +61,9 @@ export const messages = {
       havingAccountAlready: "Já tem uma conta?",
       knowingPassword: "Já sabe a password?",
       passwordRecovery: "Recuperar password",
-      confirmPassword: "Confirmar Password"
+      confirmPassword: "Confirmar Password",
+      passwordMismatch: "Passwords não são iguais",
+      passwordWithInvalidLength: "Passwords deve ter pelo menos 6 caracteres"
     },
     messages: {
       noMusics: "Sem Músicas",
